@@ -6,7 +6,7 @@
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/bgsegm.hpp>
+#include <opencv2/video/background_segm.hpp>
 
 #include <ClipRecorder.h>
 #include <Shell.h>
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     ClipRecorder recorder(recording_filepath, recording_res_x, recording_res_y, recording_fps);
     auto kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, {3,3});
-    auto fgbg = cv::bgsegm::createBackgroundSubtractorMOG();
+    auto fgbg = cv::createBackgroundSubtractorMOG2();
     cv::Mat frame;
 
     while(running)
